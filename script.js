@@ -48,7 +48,6 @@ function createGrid( num )
 // Reset grid - clear everything out of the primary container
 function replaceGrid( newGrid )
 {
-    console.log(newGrid);
     const gridContainer = document.querySelector("#grid-container");
     gridContainer.replaceChildren(...newGrid);
 }
@@ -56,7 +55,16 @@ function replaceGrid( newGrid )
 // Color clicked square
 function draw(e)
 {
-    e.target.style.backgroundColor = "black";
+    const hex = [..."0123456789ABCDEF"];
+    let color = "";
+
+    // Pick random color of 3 hex (prettier than using 6)
+    for( let i = 0; i<3; i++ )
+    {
+        color += hex[Math.floor(Math.random() * 16)];
+    }
+
+    e.target.style.backgroundColor = "#" + color;
 }
 
 // Initialize 16x16 grid
